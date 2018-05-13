@@ -1,0 +1,29 @@
+{
+  "name": "unitracker",
+  "version": "1.0.0",
+  "description": "Unitracker - Django final code institute project",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeanFlint/unitracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeanFlint/unitracker/issues"
+  },
+  "homepage": "https://github.com/DeanFlint/unitracker#readme"
+}
