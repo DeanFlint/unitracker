@@ -1,0 +1,38 @@
+@import "helpers/variables";
+
+#main-content{
+    min-height: 80vh;
+    margin-top: 100px;
+}
+
+.navbar {
+    background-color: $red;
+    color: $white;
+    .fa {
+        margin-right: 5px;
+        margin-left: 20px;
+        color: $white;
+    }
+    a{
+        color: $white;
+    }
+    .navbar-brand {
+        color: $white;
+    }
+    
+}
+
+.footer {
+    .container {
+        color: $red;
+        border-top: solid 1px $grey;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .row{
+            padding-top: 10px;
+            .fa {
+                color: $red;
+            }
+        }
+    }
+}
