@@ -1,0 +1,10 @@
+*.sqlite3
+node_modules/
+static/js/bootstrap.min.js
+static/js/jquery.min.js
+static/js/popper.min.js
+static/fonts/*
+static/css/bootstrap.css
+static/css/font-awesome.min.css
+static/css/style.css
+env.py
