@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unitracker</title>
+    <link rel="stylesheet" 
+            href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" 
+            href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" 
+            href="{% static 'css/style.css' %}">
+    
+    {% block head_js %}
+    {% endblock head_js %}
+</head>
+<body>
+    
+    <!-- Fixed masthead -->
+    <header>
+        <nav class="navbar navbar-expand-sm fixed-top navbar-light mb-5">
+            <div class="container">
+              <a class="navbar-brand p-1 m-1" href="/" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Unitracker</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                          {% if user.is_authenticated %}
+                            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+                            <li><a href="{% url 'view_bugs' %}"><i class="fa fa-bug"></i>Bugs</a></li>
+                            <li><a href="#"><i class="fa fa-certificate"></i>Features</a></li>
+                            <li><a href="#"><i class="fa fa-credit-card"></i>Donate</a></li>
+                            <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i>Profile</a></li>
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a></li>
+                        {%  else %}
+                            <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Sign in</a></li>
+                            <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Create a free account</a></li>
+                        {% endif %}
+                  </ul>
+                </div>
+              </div>
+        </nav>
+    </header>
+    
+
+    
+    <div class="container" id="main-content">
+      {% if messages %}
+      <div class="row justify-content-md-center">
+        <div class="col-md-6">
+          <div class="alert alert-success">
+              <div class="messages">
+                  {% for message in messages %}
+                      {{ message }}
+                  {% endfor %}
+              </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% block content %} {% endblock %}
+    </div>
+    
+    <footer class="footer p-3 bg-grey">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 m-auto text-center">
+            <p>Created by Dean Flint</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 m-auto d-flex flex-row justify-content-around align-items-center">
+                <a href="https://github.com/DeanFlint"><i class="fa fa-github"></i></a>
+      			<a href="https://www.facebook.com/530405042"><i class="fa fa-facebook"></i></a>
+      			<a href="https://www.linkedin.com/in/dean-flint-71872180/"><i class="fa fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    
+</body>
+</html>
