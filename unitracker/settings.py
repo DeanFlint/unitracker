@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_forms_bootstrap',
+    'accounts',
+    'bugs',
 ]
 
 MIDDLEWARE = [
@@ -79,12 +82,12 @@ WSGI_APPLICATION = 'unitracker.wsgi.application'
 #     DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 # else:
 #     print("Database URL not found, using SQLite instead")
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
