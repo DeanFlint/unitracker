@@ -1,6 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="row">
+    <a href="{% url 'create_bug' %}" class="btn btn-default">Create Bug Ticket</a>
+</div>
+
+<div class="row">
     <div class="col-md-2">
         <h6>Name</h6>
     </div>
@@ -32,7 +36,7 @@
         <p>{{bug.votes}}</p>
     </div>
     <div class="col-md-2">
-        <div class="btn btn-primary">View Bug</div>
+        <a href="{% url 'view_bug' bug.id %}" class="btn btn-default">View Bug</a>
     </div>
     {% endfor %}
 </div>
