@@ -1,4 +1,9 @@
 @import "helpers/variables";
+@import "helpers/mixins";
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
 
 #main-content{
     min-height: 80vh;
@@ -25,14 +30,56 @@
 .footer {
     .container {
         color: $red;
-        border-top: solid 1px $grey;
-        padding-top: 30px;
-        padding-bottom: 30px;
+        border-top: solid 1px $red;
+        padding-top: 24px;
+        padding-bottom: 6px;
+        font-size: 18px;
         .row{
             padding-top: 10px;
             .fa {
                 color: $red;
+                font-size: 24px;
             }
         }
     }
 }
+
+.ticket-overview {
+    min-height: 70px;
+}
+
+.filter-box{
+    @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+}
+
+.btn-primary {
+    background-color: $red;
+    border: none;
+  &:hover {
+    background-color: $red;
+    color: $white;
+    }
+  &:focus {
+    background-color: $red;
+  }
+}
+
+.table-headers {
+    .h6, h6{
+        font-weight: bold;
+    }
+}
+
+.bug-desc {
+    @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+}
+
+.comment-area{
+    min-height: 100px;
+    
+}
+
+.comment-details{
+    background-color: $grey;
+}
+
