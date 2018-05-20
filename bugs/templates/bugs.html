@@ -1,43 +1,71 @@
 {% extends 'base.html' %} {% block content %}
+{% load bootstrap_tags %}
 
-<div class="row">
-    <a href="{% url 'create_bug' %}" class="btn btn-default">Create Bug Ticket</a>
+<div class="row mb-1">
+    <div class="offset-md-1 col-md-3">
+        <h2>Bugs</h2>
+    </div>
+    <div class="offset-md-4 col-md-3 filter-box">
+        <form role="form" method="post" id="filterView" action="{% url 'view_bugs' %}">
+            <div class="form-group mt-2">
+                {{ filterView|as_bootstrap }}
+                {% csrf_token %}
+            </div>
+                
+            <div class="text-center mb-2">
+                <input class="btn btn-primary " id="submit_payment_btn" name="commit" type="submit" value="Order">
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
+    <div class="offset-md-1 col-md-2">
+        <p>
+            <a href="{% url 'create_bug' %}" class="btn btn-primary">Create Ticket</a>
+        </p>      
+    </div>
+</div>
+
+<div class="row mt-3 table-headers">
+    <div class="col-md-1 ">
+    </div>
     <div class="col-md-2">
         <h6>Name</h6>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <h6>Description</h6>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 text-center">
         <h6>Status</h6>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 text-center">
         <h6>Votes</h6>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1 ">
     </div>
 </div>
 
-<div class="row">
-    {% for bug in bugs %}
+
+{% for bug in bugs %}
+<div class="row ticket-overview">
+    <div class="col-md-1 ">
+    </div>
     <div class="col-md-2">
         <p>{{bug.name}}</p>
     </div>
-    <div class="col-md-6">
-        <p>{{bug.desc|truncatewords:20 }}</p>
+    <div class="col-md-5">
+        <p>{{bug.desc|truncatewords:15 }}</p>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 text-center">
         <p>{{bug.status}}</p>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 text-center">
         <p>{{bug.votes}}</p>
     </div>
-    <div class="col-md-2">
-        <a href="{% url 'view_bug' bug.id %}" class="btn btn-default">View Bug</a>
+    <div class="col-md-1 text-center">
+        <a href="{% url 'view_bug' bug.id %}" class="btn btn-primary">View</a>
     </div>
-    {% endfor %}
 </div>
+{% endfor %}
 {% endblock %}
