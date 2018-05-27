@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 from django.utils import timezone
-
 
 """ This is where we will specify the models in our db """
 
@@ -15,8 +15,7 @@ class Bug(models.Model):
     name = models.CharField(max_length=75)
     desc = models.TextField(max_length=500)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default="To Do")
-    votes = models.IntegerField(null=False, default=0)
-    
+
     def __str__(self):
         return self.name
 
@@ -27,4 +26,9 @@ class Comment(models.Model):
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     
     def __str__(self):
-        return self.comment, self.bug.pk
+        return self.comment
+        
+
+class UserVotes(models.Model):
+    bugg = models.ForeignKey(Bug, null=True)
+    user = models.ForeignKey(User, null=True)

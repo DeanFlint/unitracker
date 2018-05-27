@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, redirect
-from .models import Bug, Comment
+from .models import Bug, Comment, UserVotes
 from .forms import CreateBugForm, CreateCommentForm, FilterView
 
 # Create your views here.
@@ -18,16 +18,13 @@ def view_bugs(request):
                 bugs = Bug.objects.order_by('status')
             elif filterView2 == ("status_za"):
                 bugs = Bug.objects.order_by('-status')
-            elif filterView2 == ("votes_lowtohigh"):
-                bugs = Bug.objects.order_by('votes')
-            elif filterView2 == ("votes_hightolow"):
-                bugs = Bug.objects.order_by('-votes')
             else:
                 bugs = Bug.objects.order_by('-id')
     else:
         filterView = FilterView()
         """ Filter by ID reverse - newest tickets on top by default """
         bugs = Bug.objects.order_by('-id')
+        
     return render(request, "bugs.html", {"bugs": bugs, "filterView": filterView})
     
 def view_bug(request, pk):
@@ -38,7 +35,11 @@ def view_bug(request, pk):
     """
     bug = get_object_or_404(Bug, pk=pk)
     comments = Comment.objects.filter(bug_id=pk)
-    return render(request, "view_bug.html", {'bug': bug , "comments": comments})
+    user = request.user
+    users_votes = UserVotes.objects.filter(bugg=bug).count()
+    users_votes2 = UserVotes.objects.filter(bugg=bug, user=user).count()
+    return render(request, "view_bug.html", {'bug': bug , "comments": comments, 'users_votes': users_votes, 'users_votes2': users_votes2}) 
+
     
 def create_bug(request):
     """
@@ -71,4 +72,14 @@ def add_comment(request, pk):
         form = CreateCommentForm()
     return render(request, 'add_comment.html', {'form': form})
     
-    
+def user_vote(request, pk):
+    """
+    Allow user to vote for bug if not voted on this one before.
+    """
+    bugg = Bug.objects.get(pk=pk)
+    user= request.user
+    user_vote = UserVotes(bugg=bugg, user=user)
+    user_vote.save()
+    return redirect(view_bug, bugg.pk)
+
+
