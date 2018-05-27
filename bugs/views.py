@@ -1,30 +1,30 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, redirect
 from .models import Bug, Comment, UserVotes
 from .forms import CreateBugForm, CreateCommentForm, FilterView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, InvalidPage
 
 # Create your views here.
 def view_bugs(request):
     """ A view that renders the bugs content page """
     if request.method == "POST":
         filterView = FilterView(request.POST)
-        # filterView = request.POST.get('filter_by')
         if filterView.is_valid() == True:
             filterView2 = request.POST.get('order_by')
             if filterView2 == ("name_az"):
-                bugs = Bug.objects.order_by('name')
+                bugs = Bug.objects.all().order_by('name')
             elif filterView2 == ("name_za"):
-                bugs = Bug.objects.order_by('-name')
+                bugs = Bug.objects.all().order_by('-name')
             elif filterView2 == ("status_az"):
-                bugs = Bug.objects.order_by('status')
+                bugs = Bug.objects.all().order_by('status')
             elif filterView2 == ("status_za"):
-                bugs = Bug.objects.order_by('-status')
+                bugs = Bug.objects.all().order_by('-status')
             else:
-                bugs = Bug.objects.order_by('-id')
+                bugs = Bug.objects.all().order_by('-id')
     else:
         filterView = FilterView()
         """ Filter by ID reverse - newest tickets on top by default """
-        bugs = Bug.objects.order_by('-id')
-        
+        bugs = Bug.objects.all().order_by('-id')
+
     return render(request, "bugs.html", {"bugs": bugs, "filterView": filterView})
     
 def view_bug(request, pk):

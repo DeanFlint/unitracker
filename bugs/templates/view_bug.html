@@ -1,68 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
 
+
 <div class="bug-desc">
+    
     <div class="row ">
         <div class="offset-md-1 col-md-6 my-4">
-            <h2>{{bug.name}}</h2>
+            <h3>{{bug.name}}</h3>
         </div>
     </div>
     
     <div class="row">
-        <div class="offset-md-1 col-md-8">
+        <div class="offset-md-1 col-md-10">
             <h5>Description</h5>
             <p>{{bug.desc}}</p>
+        </div>
+    </div>    
+    
+    <div class="row">  
+        <div class="offset-md-1 col-md-3">
             <p><a href="{% url 'view_bugs' %}" class="btn btn-primary">Back To Bugs</a></p>
         </div>
-        <div class="col-md-2 text-center mt-4">
-            
+        <div class="col-md-1 text-center">
             <h5>Status</h5>
             <p>{{bug.status}}</p>
-    
+        </div>
+        <div class="offset-md-1 col-md-1 text-center">
             <h5>Votes</h5>
             <p>{{users_votes}}</p>
-            
+        </div>
+        <div class="offset-md-1 col-md-3 text-center">
             {% if users_votes2 == 1 %}
-                <p><a href="{% url 'user_vote' bug.id %}" class="btn btn-primary disabled">Upvote</a></p>
+                <a href="{% url 'user_vote' bug.id %}" class="btn btn-primary disabled">Upvote</a>
                 <p>You have upvoted this bug.</p>
             {% else %}
                 <p><a href="{% url 'user_vote' bug.id %}" class="btn btn-primary">Upvote</a></p>
             {% endif %}
-            <p></p>
         </div>
+
     </div>
-    
 </div>
 
 <div class="row mt-3 mb-3">
-    <div class="offset-md-1 col-md-11">
+    <div class="offset-md-1 col-md-11 mt-3">
         <h3>Comments</h3>
     </div>
-    <div class="offset-md-1 col-md-2">
+    <div class="offset-md-1 col-md-2 my-2">
     <a href="{% url 'add_comment' bug.id %}" class="btn btn-primary">Add comment</a>
     </div>
 </div>
 
-
-<!--<div class="row">-->
-<!--    <div class="offset-md-1 col-md-5">-->
-        
-<!--    </div>-->
-<!--    <div class="col-md-3">-->
-<!--        <h5>User</h5>-->
-<!--    </div>-->
-<!--    <div class="col-md-3">-->
-<!--        <h5>Comment Date</h5>-->
-<!--    </div>-->
-<!--</div>-->
-
 {% for comment in comments %}
 <div class="row comment-area my-3">
-    <div class="offset-md-1 col-md-3 pt-3 comment-details">
+    <div class="offset-md-1 mt-2 col-md-3 pt-3 comment-details">
         <p>{{comment.published_date}}</p>
         <h6>{{comment.user}}</h6>
     </div>
-    <div class="col-md-7 mt-2">
+    <div class="col-md-7 mt-2 pt-3 comment-comment">
         <p>{{comment.comment}}</p>
     </div>
 </div>
