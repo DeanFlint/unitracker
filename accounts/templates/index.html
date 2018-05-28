@@ -25,8 +25,10 @@
                 <h6>In Progress:</h6>
                 <p class="font-weight-bold">{{bug_inprogress}}</p> 
                 <h6>Done:</h6>
-                <p class="font-weight-bold">{{bug_done}}</p> 
-                <p><a href="{% url 'view_features' %}" class="btn btn-primary">Features</a></p>
+                <p class="font-weight-bold">{{bug_done}}</p>
+                {% if user.is_authenticated %}
+                    <p><a href="{% url 'view_bugs' %}" class="btn btn-primary">Bugs</a></p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -46,8 +48,10 @@
                 <h6>In Progress:</h6>
                 <p class="font-weight-bold">{{feature_inprogress}}</p> 
                 <h6>Done:</h6>
-                <p class="font-weight-bold">{{feature_done}}</p> 
-                <p><a href="{% url 'view_features' %}" class="btn btn-primary">Features</a></p>
+                <p class="font-weight-bold">{{feature_done}}</p>
+                {% if user.is_authenticated %}
+                    <p><a href="{% url 'view_features' %}" class="btn btn-primary">Features</a></p>
+                {% endif %}
             </div>
         </div>
     </div>
