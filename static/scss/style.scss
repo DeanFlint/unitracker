@@ -44,13 +44,56 @@ body{
     }
 }
 
+
+
 .ticket-overview {
     min-height: 70px;
+    background-color:$light-feature;
+    border-radius:5px;
 }
 
-.filter-box{
-    @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+.bug-page {
+    .ticket-overview {
+        min-height: 70px;
+        background-color:$light-bug;
+        border-radius:5px;
+        @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+    }
+    .btn-primary {
+        background-color: $dark-bug;
+        color: $white;
+    }
+    .desc {
+        @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+        background-color: $light-bug;
+    }
+    .filter-box{
+        @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+        background-color: $light-bug;
+    }
 }
+
+.feature-page {
+    .ticket-overview {
+        min-height: 70px;
+        background-color:$light-feature;
+        border-radius:5px;
+        @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+    }
+    .btn-primary {
+        background-color: $dark-feature;
+        color: $white;
+    }
+    .desc {
+        @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+        background-color: $light-feature;
+    }
+    .filter-box{
+        @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
+        background-color: $light-feature;
+    }
+}
+
 
 .btn-primary {
     background-color: $red;
@@ -70,9 +113,7 @@ body{
     }
 }
 
-.bug-desc {
-    @include box-shadow( 1px 1px 1px 0px rgba(173,170,173,1));
-}
+
 
 .comment-area{
     min-height: 100px;
@@ -88,3 +129,9 @@ body{
     background-color: $light-grey;
     border-radius: 0 5px 5px 0;
 }
+
+// @media screen and (max-width: 575px) {
+//   .filter-box{
+//     box-shadow: none;
+//     }
+// }
