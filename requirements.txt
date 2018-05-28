@@ -4,8 +4,6 @@ colorama==0.2.5
 html5lib==0.999
 httplib2==0.8
 keyring==3.5
-lazr.restfulclient==0.13.3
-lazr.uri==1.0.3
 lockfile==0.8
 mercurial==2.8.2
 oauth==1.0.1
