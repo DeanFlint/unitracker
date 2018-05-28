@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.views import static
 from accounts import urls as urls_accounts
 from bugs import urls as urls_bugs
+from features import urls as urls_features
+from donate import urls as urls_donate
 from accounts.views import index
 
 urlpatterns = [
@@ -25,4 +27,6 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^view_bugs/', include(urls_bugs)),
+    url(r'^view_features/', include(urls_features)),
+    url(r'^donate/', include(urls_donate)),
 ]

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'accounts',
     'bugs',
+    'donate',
+    'features',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
