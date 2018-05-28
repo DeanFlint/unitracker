@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+
+<div class="feature-page">
+    <div class="row desc">
+        <div class="offset-md-3 col-md-6 my-4">
+            <h2>Create Feature Ticket</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <button type="submit" class="btn btn-info">Create Ticket</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+    
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="feature-page">
+    <div class="desc p-2 text-center">
+        <div class="row ">
+            <div class="offset-md-1 col-md-10 my-4">
+                <h3>{{feature.name}}</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="offset-md-1 col-md-10">
+                <h5>Description</h5>
+                <p>{{feature.desc}}</p>
+            </div>
+        </div>    
+    
+        <div class="row">  
+            <div class="offset-md-1 col-md-3 my-auto">
+                <p><a href="{% url 'view_features' %}" class="btn btn-primary">Back To Features</a></p>
+            </div>
+            <div class="col-md-1 text-center my-auto">
+                <h5>Status</h5>
+                <p>{{feature.status}}</p>
+            </div>
+            <div class="offset-md-1 col-md-1 text-center my-auto">
+                <h5>Votes</h5>
+                <p>{{users_votes}}</p>
+            </div>
+            <div class="offset-md-1 col-md-3 text-center my-auto">
+                <!--If user has donated £50 or more, they can upvote features-->
+                {% if donation_total >= 50.00 %}
+                    <!--One vote per user, per feature-->
+                    {% if users_votes2 == 1 %}
+                        <a href="{% url 'feature_vote' feature.id %}" class="btn btn-primary disabled">Upvote</a>
+                        <p>You have upvoted this feature.</p>
+                    {% else %}
+                        <p><a href="{% url 'feature_vote' feature.id %}" class="btn btn-primary">Upvote</a></p>
+                    {% endif %}
+                {% else %}
+                    <p><a href="{% url 'feature_vote' feature.id %}" class="btn btn-primary disabled">Upvote</a></p>
+                    <p> To upvote, please <a href="{% url 'donate' %}">donate</a> £50 or more. </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-3">
+        <div class="offset-md-1 col-md-11 mt-3">
+            <h3>Comments</h3>
+        </div>
+        <div class="offset-md-1 col-md-2 my-2">
+        <a href="{% url 'add_feature_comment' feature.id %}" class="btn btn-primary">Add comment</a>
+        </div>
+    </div>
+
+    {% for comment in comments %}
+    <div class="row comment-area my-1">
+        <div class="offset-md-1 mt-2 col-md-3 pt-3 desc">
+            <p>{{comment.published_date}}</p>
+            <h6>{{comment.user}}</h6>
+        </div>
+        <div class="col-md-7 mt-2 pt-3 desc">
+            <p>{{comment.comment}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

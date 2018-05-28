@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %}
+{% load bootstrap_tags %}
+
+<div class="feature-page">
+    <div class="row mb-4">
+        <div class="col-sm-7 desc text-center">
+            <h1 class="my-3">Features</h1>
+            {% if donation_total >= 50.00 %}
+                <p> <a href="{% url 'create_feature' %}" class="btn btn-primary">Create Ticket</a> </p>
+            {% else %}
+                <p> <a href="{% url 'create_feature' %}" class="btn btn-primary disabled" >Create Ticket</a> </p>
+                <p> To create a ticket, please <a href="{% url 'donate' %}">donate</a> £50 or more. </p>
+            {% endif %}
+        </div>
+        <div class=" offset-sm-1 col-sm-4 my-auto p-2 filter-box">
+            <form role="form" method="post" id="filterView" action="{% url 'view_features' %}">
+                <div class="form-group mt-2">
+                    {{ filterView|as_bootstrap }}
+                    {% csrf_token %}
+                </div>
+                <div class="text-center mb-2">
+                    <input class="btn btn-primary" name="commit" type="submit" value="Order">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% for feature in features %}
+    <div class="row ticket-overview m-1 p-2">
+        <div class="offset-sm-1 col-sm-2 text-center text-sm-left">
+            <h6 class="font-weight-bold">Name:</h6>
+            <p>{{feature.name}}</p>
+        </div>
+        <div class="col-sm-4 text-center text-sm-left">
+            <h6 class="font-weight-bold">Description:</h6>
+            <p>{{feature.desc|truncatewords:10 }}</p>
+        </div>
+        <div class="col-sm-2 text-center text-sm-left ">
+            <h6 class="font-weight-bold">Status:</h6>
+            <p>{{feature.status}}</p>
+        </div>
+        <div class="col-sm-1 text-center text-sm-left my-auto">
+            <a href="{% url 'view_feature' feature.id %}" class="btn btn-primary">View</a>
+        </div>
+        <div class="col-sm-2">
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
