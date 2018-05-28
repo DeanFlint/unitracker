@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 from django.utils import timezone
 
@@ -19,7 +18,7 @@ class Bug(models.Model):
     def __str__(self):
         return self.name
 
-class Comment(models.Model):
+class BugComment(models.Model):
     bug = models.ForeignKey(Bug, null=True)
     user = models.ForeignKey(User, null=True)
     comment = models.TextField(max_length=500)
@@ -29,6 +28,9 @@ class Comment(models.Model):
         return self.comment
         
 
-class UserVotes(models.Model):
+class BugUserVotes(models.Model):
     bugg = models.ForeignKey(Bug, null=True)
     user = models.ForeignKey(User, null=True)
+    
+    def __str__(self):
+        return self.bugg

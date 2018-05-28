@@ -1,15 +1,16 @@
 from django import forms
-from .models import Bug, Comment
+from .models import Bug, BugComment
 
 class CreateBugForm(forms.ModelForm):
     class Meta:
         model = Bug
         fields = ('name', 'desc')
         
-class CreateCommentForm(forms.ModelForm):
+class CreateBugCommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = BugComment
         fields = ('comment',)
+        
         
 class FilterView(forms.Form):
     ORDER_BY_CHOICES = [

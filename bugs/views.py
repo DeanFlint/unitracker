@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, redirect
-from .models import Bug, Comment, UserVotes
-from .forms import CreateBugForm, CreateCommentForm, FilterView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, InvalidPage
+from .models import Bug, BugComment, BugUserVotes
+from .forms import CreateBugForm, CreateBugCommentForm, FilterView
 
 # Create your views here.
 def view_bugs(request):
@@ -34,10 +33,10 @@ def view_bug(request, pk):
     template. Or return a 404 error if the post is not found. 
     """
     bug = get_object_or_404(Bug, pk=pk)
-    comments = Comment.objects.filter(bug_id=pk)
+    comments = BugComment.objects.filter(bug_id=pk)
     user = request.user
-    users_votes = UserVotes.objects.filter(bugg=bug).count()
-    users_votes2 = UserVotes.objects.filter(bugg=bug, user=user).count()
+    users_votes = BugUserVotes.objects.filter(bugg=bug).count()
+    users_votes2 = BugUserVotes.objects.filter(bugg=bug, user=user).count()
     return render(request, "view_bug.html", {'bug': bug , "comments": comments, 'users_votes': users_votes, 'users_votes2': users_votes2}) 
 
     
@@ -54,12 +53,12 @@ def create_bug(request):
         form = CreateBugForm()
     return render(request, 'post_bug.html', {'form': form})
     
-def add_comment(request, pk):
+def add_bug_comment(request, pk):
     """ 
     Add a comment to the bug
     """
     bugg = Bug.objects.get(pk=pk)
-    form = CreateCommentForm(request.POST)
+    form = CreateBugCommentForm(request.POST)
     user = request.user
     if request.method == "POST":
         if form.is_valid():
@@ -69,16 +68,16 @@ def add_comment(request, pk):
             form.save()
         return redirect(view_bug, bugg.pk)
     else:
-        form = CreateCommentForm()
+        form = CreateBugCommentForm()
     return render(request, 'add_comment.html', {'form': form})
     
-def user_vote(request, pk):
+def user_bug_vote(request, pk):
     """
     Allow user to vote for bug if not voted on this one before.
     """
     bugg = Bug.objects.get(pk=pk)
     user= request.user
-    user_vote = UserVotes(bugg=bugg, user=user)
+    user_vote = BugUserVotes(bugg=bugg, user=user)
     user_vote.save()
     return redirect(view_bug, bugg.pk)
 
