@@ -15,8 +15,7 @@
     <link rel="stylesheet" 
             href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
     
-    {% block head_js %}
-    {% endblock head_js %}
+
 </head>
 <body>
     
@@ -31,8 +30,8 @@
                           {% if user.is_authenticated %}
                             <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
                             <li><a href="{% url 'view_bugs' %}"><i class="fa fa-bug"></i>Bugs</a></li>
-                            <li><a href="#"><i class="fa fa-certificate"></i>Features</a></li>
-                            <li><a href="#"><i class="fa fa-credit-card"></i>Donate</a></li>
+                            <li><a href="{% url 'view_features' %}"><i class="fa fa-certificate"></i>Features</a></li>
+                            <li><a href="{% url 'donate' %}"><i class="fa fa-credit-card"></i>Donate</a></li>
                             <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i>Profile</a></li>
                             <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a></li>
                         {%  else %}
@@ -85,6 +84,7 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    
+    {% block head_js %}
+    {% endblock head_js %}
 </body>
 </html>

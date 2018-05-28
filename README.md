@@ -1,5 +1,4 @@
-https://docs.djangoproject.com/en/2.0/topics/db/examples/many_to_many/
-https://docs.djangoproject.com/en/2.0/topics/pagination/
+[![Build Status](https://travis-ci.org/DeanFlint/unitracker.svg?branch=master)](https://travis-ci.org/DeanFlint/unitracker)
 
 Steps taken
 
