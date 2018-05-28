@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <div class="row justify-content-md-center">
-        <div class="col-md-6">
+
+<div class="bug-page">
+    <div class="row ">
+        <div class="col-sm-6 desc mx-auto p-4 text-center">
             <form method="post" action="{% url 'register' %}" class="accountform">
                 <fieldset class="form-group">
                     <legend>Create a new account</legend>
-                    <p>Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
+                    <p class="p-2">Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
                     {% csrf_token %}
                     {{  user_form | as_bootstrap }}
                     <button type="submit" class="btn btn-primary">Create account</button>
@@ -14,4 +16,5 @@
             </form>
         </div>
     </div>
+</div>
 {% endblock %}

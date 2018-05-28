@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<div class="row">
+    <div class="offset-md-3 col-md-6 text-center my-1">
+        <h1><i class="fa fa-dot-circle-o mr-3" aria-hidden="true"></i>Unitracker</h1>
+        <p class="p-2">Unitracker is a web app to allow users to report 
+            bugs, request features and view the details of each ticket. </p>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-md-1 col-md-5 text-center my-3 bug-page">
+        <div class="px-3 desc">
+            <div>
+                <h3 class="py-3">Bugs</h3>
+                <p>We spend 50% of our time working to fix the highest voted bugs.</p>
+                <p>As a user, you can post new bug tickets, review current tickets 
+                    and vote for tickets to push them higher up on our developer's work list (no 
+                    donation required!)</p> 
+            </div>
+            <div class="py-2">
+                <h4 class="p-2">Bug Stats</h4>
+                <h6>To Do:</h6>
+                <p class="font-weight-bold">{{bug_todo}}</p> 
+                <h6>In Progress:</h6>
+                <p class="font-weight-bold">{{bug_inprogress}}</p> 
+                <h6>Done:</h6>
+                <p class="font-weight-bold">{{bug_done}}</p> 
+                <p><a href="{% url 'view_features' %}" class="btn btn-primary">Features</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-5 text-center my-3 feature-page">
+        <div class="px-3 desc">
+            <div>
+                <h3 class="py-3">Features</h3>
+                <p>We spend the other 50% of our time to work on the highest voted feature tickets.</p>
+                <p>If you donate £50 or more, you can post new feature tickets, review 
+                    current tickets and vote for tickets to push them higher up on our developer's work list.</p>
+            </div>
+            <div class="py-2">
+                <h4 class="p-2">Feature Stats</h4>
+                <h6>To Do:</h6>
+                <p class="font-weight-bold">{{feature_todo}}</p> 
+                <h6>In Progress:</h6>
+                <p class="font-weight-bold">{{feature_inprogress}}</p> 
+                <h6>Done:</h6>
+                <p class="font-weight-bold">{{feature_done}}</p> 
+                <p><a href="{% url 'view_features' %}" class="btn btn-primary">Features</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+    
 {% endblock %}
