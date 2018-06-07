@@ -13,7 +13,7 @@ class Bug(models.Model):
     
     name = models.CharField(max_length=75)
     desc = models.TextField(max_length=500)
-    status = models.CharField(max_length=12, choices=STATUS_CHOICES, default="To Do")
+    status = models.CharField(max_length=12, choices=STATUS_CHOICES, default="todo")
 
     def __str__(self):
         return self.name
