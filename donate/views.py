@@ -33,7 +33,7 @@ def donate(request):
                 messages.error(request, "Your card was declined!")
                 
             if customer.paid:
-                messages.error(request, "You have successfully donate, thank you!")
+                messages.error(request, "You have successfully donated, thank you!")
                 return render(request, "index.html")
             else:
                 messages.error(request, "Unable to take payment")
