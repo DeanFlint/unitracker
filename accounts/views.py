@@ -10,12 +10,12 @@ from features.models import Feature
 # Create your views here.
 def index(request):
     """A view that displays the index page"""
-    bug_todo = Bug.objects.filter(status='To Do').count()
-    bug_inprogress = Bug.objects.filter(status='In Progress').count()
-    bug_done = Bug.objects.filter(status='Done').count()
-    feature_todo = Feature.objects.filter(status='To Do').count()
-    feature_inprogress = Feature.objects.filter(status='In Progress').count()
-    feature_done = Feature.objects.filter(status='Done').count()
+    bug_todo = Bug.objects.filter(status='todo').count()
+    bug_inprogress = Bug.objects.filter(status='inprogress').count()
+    bug_done = Bug.objects.filter(status='done').count()
+    feature_todo = Feature.objects.filter(status='todo').count()
+    feature_inprogress = Feature.objects.filter(status='inprogress').count()
+    feature_done = Feature.objects.filter(status='done').count()
 
     return render(request, "index.html", {"bug_todo": bug_todo, "bug_inprogress": bug_inprogress, "bug_done": bug_done, "feature_todo": feature_todo, "feature_inprogress": feature_inprogress, "feature_done": feature_done})
 
