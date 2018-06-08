@@ -6,8 +6,32 @@ Please click [here](../tests/browserCompatTests) to view my browser compatibilit
 
 ## Forms Testing
 
-Please click HERE to view form testing. I have tested form validation by submitting forms that pass and fail the form validation. 
+Please click [here](../tests/formsTest.pdf) to view form testing. I have tested form validation by submitting forms that pass and fail the form validation. 
 
 ## Links
 
-Please click HERE to view link testing. I've gone through the code and the application in running state to test that the links all point to the expected destinations.
+I've gone through the code and the application in running state to test that the links all point to the expected destinations.
+
+
+## Test User accounts
+
+```
+darren
+qwerty123
+
+sarah
+qwerty123
+
+steve
+qwerty123
+
+nicola
+qwerty
+```
+
+## Test Credit Card (to test donate functionality)
+
+```
+Credit Card Number: 4242424242424242
+CVC: 111
+```

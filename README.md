@@ -15,18 +15,7 @@ Users can order the view of both of the ticket types by name of ticket or status
 
 This app is written using Django, HTML, CSS and Javascript. It used Stripe as a means of allowing the user to donate and uses a sqlite and postgres database (depending on which environment is being used.)
 
-Users:
-darren
-qwerty123
 
-sarah
-qwerty123
-
-steve
-qwerty123
-
-nicola
-qwerty
 
 ## Prerequisites
 
