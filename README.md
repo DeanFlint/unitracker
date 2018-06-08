@@ -90,18 +90,10 @@ Click [here](wireframe.pdf) to view the wireframe of this project.
 ``` python manage.py runserver ```
 
 
+## Testing
 
-End with an example of getting some data out of the system or using it for a little demo
+Please click [here](/tests) to view the testing.
 
-## Running the tests
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-TO DO
-```
 
 ## Contributing
 
