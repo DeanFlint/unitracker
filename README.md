@@ -22,6 +22,12 @@ qwerty123
 sarah
 qwerty123
 
+steve
+qwerty123
+
+nicola
+qwerty
+
 ## Prerequisites
 
 Some the tech used includes:
