@@ -1,7 +1,7 @@
 SecretStorage==2.0.0
 argparse==1.2.1
 colorama==0.2.5
-html5lib==0.999
+html5lib==0.99999999
 httplib2==0.8
 keyring==3.5
 lockfile==0.8
